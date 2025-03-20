@@ -22,7 +22,7 @@ This script automates the installation of **Docker** and the **Docker Compose** 
 
 ## 📥 Installation
 
-1. **Download the script:**
+1. **Download the latest script:**
 
    ```bash
    curl -O https://raw.githubusercontent.com/sotberd/docker-install-ubuntu/main/scripts/install-docker.sh
