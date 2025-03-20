@@ -1,0 +1,35 @@
+name: Test Docker Installation Script
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest # Uses an Ubuntu runner
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🚀 Make script executable
+        run: chmod +x scripts/install-docker.sh
+
+      - name: 🛠️ Run the installation script
+        run: sudo ./scripts/install-docker.sh
+
+      - name: ✅ Verify Docker installation
+        run: docker --version
+
+      - name: ✅ Verify Docker Compose installation
+        run: docker compose version
+
+      - name: 🔄 Restart Docker and check status
+        run: |
+          sudo systemctl restart docker
+          sleep 5
+          sudo systemctl is-active docker
